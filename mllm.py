@@ -50,7 +50,7 @@ def local_llm(prompt,version,model_path=None):
     print('Using model:',model_id)
     tokenizer = LlamaTokenizer.from_pretrained(model_id)
     model = LlamaForCausalLM.from_pretrained(model_id, load_in_8bit=False, device_map='auto', torch_dtype=torch.float16)
-    with open('template/template.txt', 'r') as f:
+    with open('/app/RPG-DiffusionMaster/template/template.txt', 'r') as f:
         template=f.readlines()
     user_textprompt=f"Caption:{prompt} \n Let's think step by step:"
     textprompt= f"{' '.join(template)} \n {user_textprompt}"

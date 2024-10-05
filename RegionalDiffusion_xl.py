@@ -58,8 +58,6 @@ from diffusers import DiffusionPipeline, StableDiffusionMixin
 from diffusers.pipelines.stable_diffusion_xl.pipeline_output import StableDiffusionXLPipelineOutput
 
 
-if is_invisible_watermark_available():
-    from .watermark import StableDiffusionXLWatermarker
 
 if is_torch_xla_available():
     import torch_xla.core.xla_model as xm
@@ -257,8 +255,6 @@ class RegionalDiffusionXLPipeline(
         add_watermarker = add_watermarker if add_watermarker is not None else is_invisible_watermark_available()
 
         if add_watermarker:
-            self.watermark = StableDiffusionXLWatermarker()
-        else:
             self.watermark = None
 
     def encode_prompt(
